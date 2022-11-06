@@ -1,0 +1,9 @@
+{
+  "name": "Oleg",
+  "hobbies": ["R1", "R2", "R3"],
+  "skills": {
+    "html":4,
+    "css":3
+  },
+  "email": "ttt@gmail.com"
+}
