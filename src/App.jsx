@@ -1,42 +1,31 @@
+import { useState } from 'react';
 import './App.css';
-import user from './user.json';
+import RandomCat from './Components/RandomCat';
 
-export default function App() {
+function App() {
+  const [flag, setFlag] = useState(false);
+  const like = () => {
+    console.log('liked');
+    setFlag(true);
+  };
+  const dislike = () => {
+    console.log('disliked');
+    setFlag(false);
+  };
   return (
-    <main
-      onClick={(e) => {
-        console.log('main');
-        console.log(e.target);
-        console.log(e.currentTarget);
-      }}
-      onClickCapture={(e) => {
-        // e.stopPropagation();
-        console.log('main (on capturing)');
-      }}
-    >
-      <form
-        onClick={(e) => {
-          console.log('form');
-        }}
-      >
-        <label
-          onClick={(e) => {
-            e.preventDefault();
-            console.log('label');
-          }}
-        >
-          field
-          <input type="text" />
-        </label>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            console.log('onSubmit');
-          }}
-        >
-          Submit
+    <main>
+      <h1>Do you like this cat?</h1>
+      <RandomCat flag={flag} />
+      <div>
+        <button type="button" onClick={like}>
+          Like
         </button>
-      </form>
+        <button type="button" onClick={dislike}>
+          Dislike
+        </button>
+      </div>
     </main>
   );
 }
+
+export default App;
