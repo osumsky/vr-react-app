@@ -3,21 +3,21 @@ import React from 'react';
 class Greeting extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(props);
     this.state = {
       name: props.name,
     };
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
   clickHandler() {
-    if (this.state.name === 'Me') this.props.onHide();
+    console.log(this);
+    if (this.state.name === 'Me')
+     this.props.onHide();
     this.setState({ name: 'Me' });
   }
 
   render() {
-    return (
-      <h1 onClick={this.clickHandler.bind(this)}>Hello {this.state.name}</h1>
-    );
+    return <h1 onClick={this.clickHandler}>Hello {this.state.name}</h1>;
   }
 }
 
