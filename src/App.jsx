@@ -1,40 +1,24 @@
-import RegisterForm from './Components/RegisterForm';
-import ConfirmDialog from './Components/ConfirmDialog';
-import { useState } from 'react';
+import { connect } from 'react-redux';
+import * as ActionCreators from './actions';
 
-function App() {
-  const [user, setUser] = useState({});
-  const [confirmationOpen, setConfirmationOpen] = useState(false);
-  const [isConfirmed, setConfirmed] = useState(false);
-  const confirmUserData = (user) => {
-    setUser(user);
-    setConfirmationOpen(true);
-    console.log(user);
-  };
-  const closeDialog = () => setConfirmationOpen(false);
-  const confirmDialog = () => {
-    closeDialog();
-    setConfirmed(true);
-  };
+function App(props) {
+  const { count, step, dispatch } = props;
+  const inc = () => dispatch(ActionCreators.increment());
+  const dec = () => dispatch(ActionCreators.decrement());
+  const onChangeStep = ({ target: { value } }) =>
+    dispatch(ActionCreators.setStep(Number(value)));
   return (
     <>
-      <main>
-        {isConfirmed ? (
-          `Congratulation user: ${user.email}`
-        ) : (
-          <RegisterForm onSubmit={confirmUserData} />
-        )}
-      </main>
-      <ConfirmDialog
-        open={confirmationOpen}
-        title="Please confirm registration"
-        cancel={closeDialog}
-        confirm={confirmDialog}
-      >
-        <p>Please confirm your email: {user.email}</p>
-      </ConfirmDialog>
+      <p>Count: {count}</p>
+      <button onClick={inc}>+</button>
+      <button onClick={dec}>-</button>
+      <input type="number" value={step} onChange={onChangeStep} />
     </>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return state;
+};
+
+export default connect(mapStateToProps)(App);
