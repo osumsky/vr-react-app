@@ -16,9 +16,7 @@ function Counter(props) {
 }
 
 // берем из store (initValues) только те свойства которые нам надо
-const mapStateToProps = ({ count, step }) => {
-  return { count, step };
-};
+const mapStateToProps = ({ counter}) => counter;
 
 // по умолчанию из store передается только метод dispatch
 // здесь мы подмешиваем к App props сразу методы для работы c dispatch

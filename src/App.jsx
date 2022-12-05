@@ -1,11 +1,15 @@
 import Counter from "./components/Counter";
-import Todo from "./components/Todo";
+import TaskForm from "./components/TaskForm";
+import TodoList from "./components/TodoList";
 
 function App(props) {
   return (
     <>
       <Counter />
-      <Todo />      
+      <hr/>
+      <TaskForm />
+      <br/>
+      <TodoList />
     </>
   );
 }
