@@ -1,4 +1,4 @@
-const ACTIONS_TYPES = {
+const ACTION_TYPES = {
   INCREMENT: 'INCREMENT',
   DECREMENT: 'DECREMENT',
   SET_STEP: 'SET_STEP',
@@ -8,4 +8,4 @@ const ACTIONS_TYPES = {
   DELETE_TASK: 'DELETE_TASK',
 };
 
-export default ACTIONS_TYPES;
+export default ACTION_TYPES;
