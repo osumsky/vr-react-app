@@ -17,3 +17,17 @@ export function* createUserSaga(action) {
   }
 }
 
+export function* getAllUsersSaga(action) {
+  try {
+    const {
+      data: {
+        data: users,
+      },
+    } = yield API.getAllUsers(action.payload);
+    // First "data" is response from axios,
+    // second "data" is our response from our server
+    yield put(UserActionCreators.getUsersSuccess({ users }));
+  } catch (error) {
+    yield put(UserActionCreators.getUsersError({ error }));
+  }
+}

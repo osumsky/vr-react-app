@@ -6,4 +6,5 @@ const httpClient = axios.create({
 
 export const createUser = (data) => httpClient.post('/users', data);
 
-export const getAllUsers = () => httpClient.get('/users');
+export const getAllUsers = ({ limit = 5, offset = 0 }) =>
+  httpClient.get('/users', { params: { limit, offset } });
