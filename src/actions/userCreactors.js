@@ -1,19 +1,19 @@
 import ACTIONS_TYPES from './actionTypes';
 
 // CREATE USER
-export const createUserRequest = (values) => ({
+export const createUserRequest = ({ values }) => ({
   type: ACTIONS_TYPES.CREATE_USER_REQUEST,
-  values,
+  payload: { values },
 });
 
-export const createUserSuccess = (values) => ({
+export const createUserSuccess = ({ user }) => ({
   type: ACTIONS_TYPES.CREATE_USER_SUCCESS,
-  values,
+  payload: { user },
 });
 
-export const createUserError = (error) => ({
+export const createUserError = ({ error }) => ({
   type: ACTIONS_TYPES.CREATE_USER_ERROR,
-  error,
+  payload: { error },
 });
 
 // GET USERS

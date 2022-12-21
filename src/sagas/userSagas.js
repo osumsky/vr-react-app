@@ -8,12 +8,13 @@ export function* createUserSaga(action) {
       data: {
         data: [user],
       },
-    } = yield API.createUser(action.values);
+    } = yield API.createUser(action.payload.values);
+
     // First "data" is response from axios,
     // second "data" is our response from our server
-    yield put(UserActionCreators.createUserSuccess(user));
+    yield put(UserActionCreators.createUserSuccess({user}));
   } catch (error) {
-    yield put(UserActionCreators.createUserError(error));
+    yield put(UserActionCreators.createUserError({error}));
   }
 }
 

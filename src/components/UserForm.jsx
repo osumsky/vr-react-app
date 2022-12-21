@@ -15,7 +15,7 @@ const aaa = {
 const UserForm = (props) => {
   const { createUserRequestAction } = props;
   const onSubmit = (values, formikBag) => {
-    createUserRequestAction(values);
+    createUserRequestAction({values});
     formikBag.resetForm();
   };
   return (
