@@ -6,7 +6,7 @@ import * as UserActionCreators from '../actions/userCreactors';
 
 function UsersList(props) {
   const { users, isFetching, error } = useSelector(({ users }) => users);
-  const { getUsersRequest } = bindActionCreators(
+  const { getUsersRequest, clearUserError } = bindActionCreators(
     UserActionCreators,
     useDispatch()
   );
@@ -22,7 +22,12 @@ function UsersList(props) {
     <section>
       <h2>Users list</h2>
       {isFetching && <p>Loading...</p>}
-      {error && <p>{JSON.stringify(error)}</p>}
+      {error && (
+        <div>
+          <span>{error.message}</span>
+          <button onClick={clearUserError}>Reset error</button>
+        </div>
+      )}
       {users.length === 0 && <p>no users</p>}
       {users.map((user) => (
         <li key={user.id}>{user.email}</li>

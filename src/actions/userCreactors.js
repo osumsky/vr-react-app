@@ -31,3 +31,7 @@ export const getUsersError = ({ error }) => ({
   type: ACTIONS_TYPES.GET_USERS_ERROR,
   payload: { error },
 });
+
+export const clearUserError = () => ({
+  type: ACTIONS_TYPES.CLEAR_USER_ERROR,
+});

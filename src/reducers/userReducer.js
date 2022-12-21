@@ -15,6 +15,7 @@ const handlerError = produce((draftState, action) => {
   const {
     payload: { error },
   } = action;
+  draftState.isFetching = false;
   draftState.error = error;
 });
 
@@ -43,6 +44,11 @@ const handlers = {
   // ERRORS
   [ACTIONS_TYPES.GET_USERS_ERROR]: handlerError,
   [ACTIONS_TYPES.CREATE_USER_ERROR]: handlerError,
+
+  // CLEAR ERRORS
+  [ACTIONS_TYPES.CLEAR_USER_ERROR]: produce((draftState, action) => {
+    draftState.error = null;
+  }),
 };
 
 const userReducer = (state = initValues, action) => {
